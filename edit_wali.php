@@ -32,10 +32,10 @@ if (isset($_GET['id'])) {
 // Proses form jika disubmit
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nama_wali = mysqli_real_escape_string($koneksi, $_POST['nama_wali']);
-    $telepon = mysqli_real_escape_string($koneksi, $_POST['telepon']);
+    $kontak = mysqli_real_escape_string($koneksi, $_POST['kontak']);
 
     // Update data wali
-    $query = "UPDATE wali_murid SET nama_wali = '$nama_wali', kontak = '$telepon' WHERE id_wali = $id";
+    $query = "UPDATE wali_murid SET nama_wali = '$nama_wali', kontak = '$kontak' WHERE id_wali = $id";
     if (mysqli_query($koneksi, $query)) {
         echo "<script>alert('Data wali murid berhasil diperbarui'); window.location='wali.php';</script>";
     } else {
@@ -61,8 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="text" name="nama_wali" class="form-control" value="<?php echo htmlspecialchars($wali['nama_wali']); ?>" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Telepon</label>
-                <input type="text" name="telepon" class="form-control" value="<?php echo htmlspecialchars($wali['kontak']); ?>" required>
+                <label class="form-label">Kontak</label>
+                <input type="text" name="kontak" class="form-control" value="<?php echo htmlspecialchars($wali['kontak']); ?>" required>
             </div>
             <button type="submit" class="btn btn-success">Simpan</button>
             <a href="wali.php" class="btn btn-secondary">Batal</a>
